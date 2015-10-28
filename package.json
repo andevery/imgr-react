@@ -1,0 +1,26 @@
+{
+  "name": "imagenar",
+  "version": "0.0.1",
+  "description": "",
+  "main": "js/bundle.js",
+  "scripts": {
+    "build": "babel src --out-dir js/src && webpack js/src/index.js js/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel-core": "^5.8.29",
+    "babel-loader": "^5.3.2",
+    "history": "^1.12.6",
+    "material-ui": "^0.13.0",
+    "react": "^0.14.0",
+    "react-addons-create-fragment": "^0.14.0",
+    "react-addons-pure-render-mixin": "^0.14.0",
+    "react-addons-transition-group": "^0.14.0",
+    "react-addons-update": "^0.14.0",
+    "react-dom": "^0.14.0",
+    "react-router": "^1.0.0-rc3",
+    "react-tap-event-plugin": "^0.2.1",
+    "webpack": "^1.12.2"
+  }
+}
