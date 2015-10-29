@@ -9,6 +9,7 @@ import {
   Icons
 } from 'material-ui';
 import confirmDialog from '../helpers/ConfirmDialog';
+import {Accounts} from './Collection'
 
 const NavigationMoreVert = Icons.NavigationMoreVert
 
@@ -24,9 +25,8 @@ export default class AccountItem extends React.Component {
         console.log("Edit");
         break;
       case 'delete':
-      console.log(this.context)
         confirmDialog('Delete the account?', '', () => {
-          this.context.collection.delete(item.props.id);
+          Accounts.delete(item.props.id);
         });
         break;
     }
@@ -71,8 +71,4 @@ export default class AccountItem extends React.Component {
       </div>
     );
   }
-}
-
-AccountItem.contextTypes = {
-  collection: React.PropTypes.object
 }

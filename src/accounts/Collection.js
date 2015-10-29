@@ -1,4 +1,4 @@
-export default class Accounts {
+class AccountsCollection {
   constructor() {
     this.items = [
       {id: 1, username: 'andy_odds', password: 'password', auth_token: 'andy_odds_aasadflhfewoikdslkjdsa', media: 33, followedBy: 1839, follows: 234},
@@ -33,3 +33,5 @@ export default class Accounts {
     }
   }
 }
+
+export const Accounts = new AccountsCollection()

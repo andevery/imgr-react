@@ -3,6 +3,7 @@ import {
   Dialog,
   TextField
 } from 'material-ui';
+import {Accounts} from './Collection'
 
 export default class AccountNew extends React.Component {
   constructor() {
@@ -24,7 +25,8 @@ export default class AccountNew extends React.Component {
         ref='newAccount'
         actions={actions}
         actionFocus='submit'
-        modal={true} >
+        modal={true}
+        onDismiss={() => this._onDismiss()} >
 
         <TextField
           style={{width: '100%'}}
@@ -81,7 +83,7 @@ export default class AccountNew extends React.Component {
     }
 
     let account = {
-      id: (this.context.collection.items.length+1),
+      id: (Accounts.items.length+1),
       username: username,
       password: password,
       token: token,
@@ -90,11 +92,15 @@ export default class AccountNew extends React.Component {
       followedBy: 0
     }
 
-    this.context.collection.create(account)
+    Accounts.create(account)
     this.refs.newAccount.dismiss();
   }
-}
 
-AccountNew.contextTypes = {
-  collection: React.PropTypes.object
+  _onDismiss() {
+    this.setState({
+      usernameError: null,
+      passwordError: null,
+      tokenError: null
+    });
+  }
 }
