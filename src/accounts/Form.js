@@ -85,7 +85,7 @@ export default class AccountForm extends React.Component {
     }
 
     let account = {
-      id: this.state.data.id ? this.state.data.id : (Accounts.items.length+1),
+      id: this.state.data.id ? this.state.data.id : (Math.random() * 1000000 | 0),
       username: username,
       password: password,
       token: token,

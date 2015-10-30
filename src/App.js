@@ -29,6 +29,7 @@ class App extends React.Component {
   render() {
     return (
       <AppCanvas style={styles.root}>
+        <div style={styles.root}>
         {
           this.state.renderTabs ? <MenuTabs /> :
           <MenuBar toggle={this.leftNavToggle.bind(this)} title={this.props.routes[this.props.routes.length-1].title} />
@@ -37,6 +38,7 @@ class App extends React.Component {
           {this.props.children}
         </Paper>
         <AppLeftNav ref="leftNav" />
+        </div>
       </AppCanvas>
     );
   }

@@ -4,7 +4,9 @@ const Spacing = Styles.Spacing
 
 const styles = {
   root: {
-    height: '100%'
+    height: '100%',
+    background: 'url(images/back6.png) no-repeat center center fixed',
+    backgroundSize: 'cover'
   },
   container: {
     maxWidth: 800,
