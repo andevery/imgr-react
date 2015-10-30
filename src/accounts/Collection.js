@@ -1,15 +1,19 @@
 class AccountsCollection {
   constructor() {
     this.items = [
-      {id: 1, username: 'andy_odds', password: 'password', auth_token: 'andy_odds_aasadflhfewoikdslkjdsa', media: 33, followedBy: 1839, follows: 234},
-      {id: 2, username: 'msssachesets', password: 'password', auth_token: 'andy_odds_aasadflhfewoikdslkjdsa', media: 33, followedBy: 1839, follows: 234},
-      {id: 3, username: 'ollollollo.lo', password: 'password', auth_token: 'andy_odds_aasadflhfewoikdslkjdsa', media: 33, followedBy: 1839, follows: 234},
-      {id: 4, username: 'moscow.district.self', password: 'password', auth_token: 'andy_odds_aasadflhfewoikdslkjdsa', media: 33, followedBy: 1839, follows: 234},
+      {id: 1, username: 'andy_odds', password: 'password', token: 'andy_odds_aasadflhfewoikdslkjdsa', media: 33, followedBy: 1839, follows: 234},
+      {id: 2, username: 'msssachesets', password: 'password', token: 'andy_odds_aasadflhfewoikdslkjdsa', media: 33, followedBy: 1839, follows: 234},
+      {id: 3, username: 'ollollollo.lo', password: 'password', token: 'andy_odds_aasadflhfewoikdslkjdsa', media: 33, followedBy: 1839, follows: 234},
+      {id: 4, username: 'moscow.district.self', password: 'password', token: 'andy_odds_aasadflhfewoikdslkjdsa', media: 33, followedBy: 1839, follows: 234},
     ];
   }
 
   getAll() {
     return this.items;
+  }
+
+  get(itemID) {
+    return this.items.find((x) => x.id == itemID)
   }
 
   create(item) {

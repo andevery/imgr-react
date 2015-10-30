@@ -19,10 +19,17 @@ export default class AccountItem extends React.Component {
     this.handleMenuItemTouchTap = this.handleMenuItemTouchTap.bind(this);
   }
 
+  static get contextTypes() {
+    return {
+      accountForm: React.PropTypes.func
+    };
+  }
+
   handleMenuItemTouchTap(e, item) {
     switch (item.props.action) {
       case 'edit':
-        console.log("Edit");
+        this.context.accountForm().setState({data: Accounts.get(item.props.id)});
+        this.context.accountForm().show();
         break;
       case 'delete':
         confirmDialog('Delete the account?', '', () => {

@@ -5,10 +5,10 @@ import {
 } from 'material-ui';
 import {Accounts} from './Collection'
 
-export default class AccountNew extends React.Component {
+export default class AccountForm extends React.Component {
   constructor() {
     super();
-    this.state = {};
+    this.state = {data: {}};
     this._onSubmit = this._onSubmit.bind(this);
   }
 
@@ -21,7 +21,6 @@ export default class AccountNew extends React.Component {
     return (
       <Dialog
         contentStyle={{maxWidth: 300}}
-        title='New account'
         ref='newAccount'
         actions={actions}
         actionFocus='submit'
@@ -33,7 +32,8 @@ export default class AccountNew extends React.Component {
           ref='username'
           hintText="Instagram account username"
           floatingLabelText="Username"
-          errorText={this.state.usernameError} /><br/>
+          errorText={this.state.usernameError}
+          defaultValue={this.state.data.username} /><br/>
 
         <TextField
           style={{width: '100%'}}
@@ -41,14 +41,16 @@ export default class AccountNew extends React.Component {
           hintText="Password field"
           floatingLabelText="Password"
           type="password"
-          errorText={this.state.passwordError} /><br/>
+          errorText={this.state.passwordError}
+          defaultValue={this.state.data.password} /><br/>
 
         <TextField
           style={{width: '100%'}}
           ref='token'
           hintText="Token"
           floatingLabelText="Token"
-          errorText={this.state.tokenError} /><br/>
+          errorText={this.state.tokenError}
+          defaultValue={this.state.data.token} /><br/>
       </Dialog>
     );
   }
@@ -83,7 +85,7 @@ export default class AccountNew extends React.Component {
     }
 
     let account = {
-      id: (Accounts.items.length+1),
+      id: this.state.data.id ? this.state.data.id : (Accounts.items.length+1),
       username: username,
       password: password,
       token: token,
@@ -92,12 +94,13 @@ export default class AccountNew extends React.Component {
       followedBy: 0
     }
 
-    Accounts.create(account)
+    this.state.data.id ? Accounts.update(account) : Accounts.create(account);
     this.refs.newAccount.dismiss();
   }
 
   _onDismiss() {
     this.setState({
+      data: {},
       usernameError: null,
       passwordError: null,
       tokenError: null

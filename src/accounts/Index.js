@@ -5,7 +5,7 @@ import {
   Icons,
 } from 'material-ui';
 import AccountItem from './_Item';
-import AccountNew from './New';
+import AccountForm from './Form';
 import { Accounts } from './Collection';
 
 const ContentAdd = Icons.ContentAdd;
@@ -15,12 +15,25 @@ class AccountsIndex extends React.Component {
     super();
     this.state = {data: Accounts.getAll()};
     Accounts.onChange = () => this.setState({data: Accounts.getAll()});
+    this.accountForm = this.accountForm.bind(this);
+  }
+
+  static get childContextTypes() {
+    return {
+      accountForm: React.PropTypes.func
+    };
+  }
+
+  getChildContext() {
+    return {
+      accountForm: this.accountForm
+    };
   }
 
   render() {
     let accountNodes = this.state.data.map((acc) => {
       return (
-        <AccountItem key={acc.id} data={acc} />
+        <AccountItem key={acc.id} data={acc} form={this.refs.accountNew} />
       );
     });
 
@@ -29,12 +42,16 @@ class AccountsIndex extends React.Component {
         <List>
           {accountNodes}
         </List>
-        <FloatingActionButton style={{position: 'fixed', right: 30, bottom: 30}} onTouchTap={() => this.refs.accountNew.show()}>
+        <FloatingActionButton style={{position: 'fixed', right: 30, bottom: 30}} onTouchTap={() => this.accountForm().show()}>
           <ContentAdd />
         </FloatingActionButton>
-        <AccountNew ref='accountNew' />
+        <AccountForm ref='accountNew' />
       </div>
     );
+  }
+
+  accountForm() {
+    return this.refs.accountNew;
   }
 }
 
