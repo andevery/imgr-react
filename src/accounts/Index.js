@@ -20,7 +20,7 @@ class AccountsIndex extends React.Component {
 
   static get childContextTypes() {
     return {
-      accountForm: React.PropTypes.func
+      accountForm: React.PropTypes.func,
     };
   }
 
@@ -37,12 +37,14 @@ class AccountsIndex extends React.Component {
       );
     });
 
+    let buttonStyle = 'calc(max(50%, 400px) - min(50%, 400px) + 30px)'
+
     return (
-      <div>
+      <div onResize={this.setAddButtonPosition}>
         <List>
           {accountNodes}
         </List>
-        <FloatingActionButton style={{position: 'fixed', right: 30, bottom: 30}} onTouchTap={() => this.accountForm().show()}>
+        <FloatingActionButton className='addButton' style={{position: 'fixed', right: buttonStyle, bottom: 30}} onTouchTap={() => this.accountForm().show()}>
           <ContentAdd />
         </FloatingActionButton>
         <AccountForm ref='accountNew' />

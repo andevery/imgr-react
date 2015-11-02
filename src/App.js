@@ -16,7 +16,10 @@ class App extends React.Component {
 
   componentWillMount() {
     let setTabsState = () => {
-      this.setState({ renderTabs: !(document.body.clientWidth <= 800) });
+      let renderTabs = !(document.body.clientWidth <= 800)
+      this.setState({
+        renderTabs: renderTabs
+      });
     };
     setTabsState();
     window.onresize = setTabsState;
@@ -46,7 +49,8 @@ class App extends React.Component {
 
 App.childContextTypes = {
   router: React.PropTypes.object,
-  location: React.PropTypes.object
+  location: React.PropTypes.object,
+  onResize: React.PropTypes.func
 };
 
 export default App

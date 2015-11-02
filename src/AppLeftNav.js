@@ -26,7 +26,7 @@ export default class AppLeftNav extends React.Component {
         menuItems={menuItems}
         style={styles.nav}
         onChange={(e, index, item) => this.context.router.pushState(null, item.route)}
-        selectedIndex={menuItems.findIndex( x => x.route == this.context.location.pathname )} />
+        selectedIndex={menuItems.findIndex((x) => x.route == this.context.location.pathname )} />
     );
   }
 

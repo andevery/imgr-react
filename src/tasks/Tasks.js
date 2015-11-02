@@ -85,9 +85,11 @@ class Tasks extends React.Component {
             </List>
           </Tab>
         </Tabs>
-        <FloatingActionButton style={{position: 'fixed', right: 30, bottom: 30}} onTouchTap={() => this.refs.newTaskDialog.show()}>
-          <ContentAdd />
-        </FloatingActionButton>
+        <div style={{position: 'fixed', bottom: 30, width: '100%', textAlign: 'right', boxSizing: 'border-box', maxWidth: 800, paddingRight: 60}}>
+          <FloatingActionButton onTouchTap={() => this.refs.newTaskDialog.show()}>
+            <ContentAdd />
+          </FloatingActionButton>
+        </div>
         <Dialog
           contentStyle={{textAlign: 'center', width: 240}}
           ref='newTaskDialog'
