@@ -7,7 +7,7 @@ const Typography = Styles.Typography;
 const styles = {
   container: {
     position: 'absolute',
-    top: 0,
+    top: 100,
     left: 0,
     right: 0,
     bottom: 0,
@@ -17,7 +17,6 @@ const styles = {
     height: 470,
     boxSizing: 'border-box',
     textAlign: 'center',
-    paddingTop: 50
   },
   caption: {
     dislay: 'block',
@@ -32,8 +31,8 @@ const styles = {
   },
   paper: {
     maxWidth: 300,
-    maxHeight: 350,
-    height: 300,
+    maxHeight: 370,
+    height: 320,
     padding: Spacing.desktopGutter,
     paddingTop: 0,
     boxSizing: 'border-box',

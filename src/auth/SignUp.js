@@ -16,7 +16,7 @@ export default class SignUp extends React.Component {
       <div style={styles.container}>
         <h1 style={styles.caption}>Rocking your instagram with Imagenar.inᵝ</h1>
         <Paper style={styles.paper}>
-          <div>
+          <div style={{height: 235}}>
             <TextField
               ref='username'
               style={styles.input}
@@ -52,6 +52,9 @@ export default class SignUp extends React.Component {
   }
 
   _onSignUp() {
+    this.setState({
+      usernameError: null, emailError: null, passwordError: null
+    });
     let username = this.refs.username.getValue();
     if (username.length == 0) {
       this.setState({usernameError: 'Username is required'});
@@ -61,10 +64,18 @@ export default class SignUp extends React.Component {
       return;
     }
 
-    let email = this.refs.password.getValue();
+    let email = this.refs.email.getValue();
     if (email.length == 0) {
       this.setState({emailError: 'Email is required'});
       return;
+    }
+
+    let password = this.refs.password.getValue();
+    if (password.length == 0) {
+      this.setState({passwordError: 'Password is required'});
+      return;
+    } else if (password.length < 6) {
+      this.setState({passwordError: 'Password is too short (minimum is 6 characters)'});
     }
   }
 }
